@@ -37,7 +37,6 @@ void uniao(struct Lista *lista1, struct Lista *lista2, struct Lista *lista3);
 
 struct stack {
     int tam;
-    int dado;
     struct node *endereco;
     struct stack *prox;
 };
@@ -186,7 +185,7 @@ int push(Pilha *pilha,struct node *endereco){
 
 int pop(Pilha *pilha){
     Pilha *aux = pilha->prox;
-    int rem = aux->dado;
+    int rem = aux->endereco->dado;
 
     pilha->prox = pilha->prox->prox;
     free(aux);
@@ -199,7 +198,7 @@ int imprimeTopo(Pilha pilha){
 
     Pilha *aux = pilha.prox;
     
-    return aux->dado;
+    return aux->endereco->dado;
 }
 
 void imprimeTudo(Pilha pilha){
@@ -215,7 +214,7 @@ void imprimeTudo(Pilha pilha){
     printf("\nPilha\n");
     
     while(aux != NULL){
-        printf("%d  "  , aux->dado);
+        printf("%d  "  , aux->endereco->dado);
         aux = aux->prox;
     }
     printf("\n");
